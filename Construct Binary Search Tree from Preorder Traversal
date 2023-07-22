@@ -1,0 +1,15 @@
+ TreeNode* add(int val, TreeNode*root){
+        if(root==NULL)
+            return new TreeNode(val);
+        else if(val > root -> val)
+            root -> right = add(val, root -> right);
+        else
+            root -> left = add(val, root -> left);
+        return root;
+    }
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
+        TreeNode* ans = NULL;
+        for(auto i: preorder)
+            ans = add(i,ans);
+        return ans;
+    }
